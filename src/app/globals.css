@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables */
+:root {
+  --background: #f8f6ee;
+  --text-primary: #000000;
+  --accent: #c9a929;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base HTML */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    var(--accent) 50%,
+    #ffffff 100%
+  );
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reusable layout helpers */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* Grid helpers */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+a:not(.nav-link) {
+  text-decoration: none;
+  color: inherit;
+}
+

@@ -1,0 +1,37 @@
+portfolio/
+├── public/                (No changes needed here)
+│   ├── images/
+│   └── resume.pdf
+│
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx     
+│   │   ├── page.tsx       
+│   │   ├── globals.css
+│   │   ├── about/
+│   │   │   └── page.tsx   
+│   │   ├── projects/
+│   │   │   └── page.tsx   
+│   │   ├── skills/
+│   │   │   └── page.tsx   
+│   │   └── contact/
+│   │       └── page.tsx   
+│   │
+│   ├── components/
+│   │   ├── Navbar.tsx     
+│   │   ├── Footer.tsx     
+│   │   ├── ProjectCard.tsx
+│   │   └── SkillBadge.tsx 
+│   │
+│   ├── data/
+│   │   ├── projects.ts    
+│   │   └── skills.ts      
+│   │
+│   └── styles/
+│       └── layout.css
+│
+├── .gitignore
+├── package.json
+├── next.config.mjs        (Next.js 14+ usually uses .mjs or .js)
+├── tsconfig.json          (Renamed from jsconfig.json)
+└── README.md
