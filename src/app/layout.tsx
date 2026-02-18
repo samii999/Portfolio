@@ -1,23 +1,30 @@
+// src/app/layout.tsx
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ReactNode } from 'react';
-import { Cinzel_Decorative } from "next/font/google";
 
-const cinzel = Cinzel_Decorative({ subsets: ["latin"], weight: ["700"] });
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: 'Muhammad Usman | Portfolio',
-  description: 'BSCS Student & Web Developer',
+export const metadata: Metadata = {
+  title: 'Muhammad Usman - Portfolio',
+  description: 'Computer Science graduate specializing in web and mobile development',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <Navbar cinzelClassName={cinzel.className} />
-          <main style={{ flexGrow: 1 }}>{children}</main>
+      <body className={inter.className}>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

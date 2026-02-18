@@ -1,294 +1,227 @@
-"use client";
-
-import Link from "next/link";
-import Image from "next/image";
+// src/app/about/page.tsx
+import Image from 'next/image';
+import Link from 'next/link';
+import { 
+  GraduationCap, 
+  Calendar, 
+  MapPin, 
+  Briefcase, 
+  Award, 
+  Code, 
+  Smartphone,
+  ExternalLink,
+  Mail,
+  Download
+} from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <section
-      className="w-full max-w-7xl mx-auto flex flex-col gap-16"
-      style={{
-        paddingLeft: "4rem",
-        paddingRight: "4rem",
-        paddingTop: "4rem",
-        paddingBottom: "4rem",
-        background:
-          "linear-gradient(to bottom, #ffffff 0%, #fcd34d 50%, #ffffff 100%)",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Header */}
-      <div
-        style={{
-          backgroundColor: "#000000",
-          border: "3px solid #000000",
-          borderRadius: "0.5rem",
-          padding: "1.5rem 2rem",
-          marginBottom: "2rem",
-        }}
-      >
-        <h1
-          className="text-4xl md:text-6xl font-bold uppercase"
-          style={{
-            color: "#ffffff",
-            letterSpacing: "-0.05em",
-            fontFamily: "Inter, sans-serif",
-          }}
-        >
-          About Me
-        </h1>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Me</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            Computer Science graduate passionate about building innovative web and mobile applications
+          </p>
+        </div>
+      </section>
 
       {/* Main Content */}
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        {/* Left Column - Text Content */}
-        <div className="space-y-8">
-          {/* Introduction */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Introduction
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              I am <strong>Muhammad Usman</strong>, a passionate{" "}
-              <strong>BSCS graduate</strong> specializing in web and mobile
-              application development. I enjoy building practical, user-focused
-              digital solutions that solve real-world problems through clean
-              design and efficient code.
-            </p>
-          </div>
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Left Column - Profile Image */}
+            <div className="md:w-1/3">
+              <div className="sticky top-24">
+                <div className="relative w-64 h-64 mx-auto md:mx-0 mb-6">
+                  <Image
+                    src="/images/profile/profile.jpeg"
+                    alt="Muhammad Usman"
+                    fill
+                    className="rounded-2xl object-cover shadow-xl border-4 border-white"
+                  />
+                </div>
+                
+                {/* Quick Info Cards */}
+                <div className="space-y-4">
+                  <div className="bg-white rounded-xl p-4 shadow-md flex items-center gap-3">
+                    <div className="p-2 bg-blue-100 rounded-lg">
+                      <MapPin className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Location</p>
+                      <p className="font-semibold">Attock, Pakistan</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl p-4 shadow-md flex items-center gap-3">
+                    <div className="p-2 bg-green-100 rounded-lg">
+                      <Mail className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Email</p>
+                      <p className="font-semibold">um558899@gmail.com</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl p-4 shadow-md flex items-center gap-3">
+                    <div className="p-2 bg-purple-100 rounded-lg">
+                      <Calendar className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Experience</p>
+                      <p className="font-semibold">1+ Year</p>
+                    </div>
+                  </div>
+                </div>
 
-          {/* Academic Background */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Academic Background
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              I have completed my Bachelor of Science in Computer Science (BSCS), where I developed a solid foundation in:
-            </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-              <li>Programming fundamentals</li>
-              <li>Software engineering principles</li>
-              <li>Database systems</li>
-              <li>Web and mobile application development</li>
-            </ul>
-            <div
-              className="p-6 border rounded-xl bg-gray-50 mt-6"
-              style={{ border: "3px solid #FFD700" }}
-            >
-              <h3 className="text-xl font-semibold text-black mb-2">
-                Final Year Project (FYP)
-              </h3>
-              <p className="text-gray-700">
-                <strong>Fixora – Civic Issue Reporting App</strong>
-                <br />
-                A mobile application that enables citizens to report public
-                issues using images and GPS-based location tracking, while
-                allowing staff and organizations to verify, manage, and resolve
-                issues efficiently.
-              </p>
-            </div>
-          </div>
-
-          {/* What I Do */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              What I Do
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Design and develop responsive web interfaces</li>
-              <li>Build cross-platform mobile applications</li>
-              <li>Integrate backend services and REST APIs</li>
-              <li>Work with Firebase, Firestore, and Supabase</li>
-              <li>Train and experiment with AI / ML models</li>
-              <li>Focus on performance, usability, and clean architecture</li>
-            </ul>
-          </div>
-
-          {/* Skills */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Technical Skills
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6 text-gray-700">
-              <div>
-                <strong>Frontend:</strong> HTML, CSS, JavaScript, React, Next.js
-              </div>
-              <div>
-                <strong>Mobile:</strong> React Native, Expo
-              </div>
-              <div>
-                <strong>Backend & Cloud:</strong> Firebase, Firestore, Supabase
-              </div>
-              <div>
-                <strong>AI & ML:</strong> Model training, data preprocessing
-              </div>
-              <div>
-                <strong>Tools:</strong> Git, GitHub, REST APIs
-              </div>
-              <div>
-                <strong>Design:</strong> UI/UX principles, responsive layouts
+                {/* Download Resume Button */}
+                <Link
+                  href="/resume.pdf"
+                  target="_blank"
+                  className="mt-6 w-full bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <Download size={20} />
+                  Download Resume
+                </Link>
               </div>
             </div>
-          </div>
 
-          {/* Goals */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Professional Goals
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              My goal is to grow as a full-stack and mobile application developer,
-              work on impactful projects, and continuously improve my skills in
-              AI-driven solutions and scalable application design.
-            </p>
-          </div>
+            {/* Right Column - About Content */}
+            <div className="md:w-2/3">
+              {/* Professional Summary */}
+              <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <span className="w-1 h-8 bg-blue-600 rounded-full"></span>
+                  Professional Summary
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Computer Science graduate with strong foundational knowledge of web and mobile application development. 
+                  Hands-on experience with React Native, React.js, and Next.js through academic and personal projects.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  Developed a full-featured Final Year Project involving authentication, role-based access control, APIs, 
+                  and AI-assisted image classification. Seeking an internship opportunity to apply technical skills, 
+                  learn from industry professionals, and grow as a full-stack developer.
+                </p>
+              </div>
 
-          {/* Values */}
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-black mb-4"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Work Ethic & Values
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Strong problem-solving mindset</li>
-              <li>Clean and maintainable code practices</li>
-              <li>Continuous learning and self-improvement</li>
-              <li>Team collaboration and clear communication</li>
-              <li>Focus on real-world impact through technology</li>
-            </ul>
+              {/* Education */}
+              <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <span className="w-1 h-8 bg-green-600 rounded-full"></span>
+                  <GraduationCap className="w-6 h-6 text-green-600" />
+                  Education
+                </h2>
+                
+                <div className="border-l-4 border-green-200 pl-4">
+                  <h3 className="text-xl font-bold mb-1">COMSATS University Islamabad</h3>
+                  <p className="text-green-600 font-semibold mb-2">Attock Campus</p>
+                  <p className="text-gray-700 mb-3">Bachelor of Science in Computer Science (BSCS)</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">2020 - 2024</span>
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">CGPA: 3.5/4.0</span>
+                  </div>
+                  
+                  <h4 className="font-semibold mb-2">Relevant Coursework:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      'Mobile Application Development',
+                      'Web Technologies',
+                      'Machine Learning',
+                      'Software Engineering',
+                      'Database Systems',
+                      'Data Structures'
+                    ].map((course, index) => (
+                      <span key={index} className="px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm">
+                        {course}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Work Experience */}
+              <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <span className="w-1 h-8 bg-purple-600 rounded-full"></span>
+                  <Briefcase className="w-6 h-6 text-purple-600" />
+                  Work Experience
+                </h2>
+
+                <div className="space-y-6">
+                  <div className="border-l-4 border-purple-200 pl-4">
+                    <h3 className="text-xl font-bold mb-1">Web & Mobile App Developer</h3>
+                    <p className="text-purple-600 font-semibold mb-2">Personal Projects • Jan 2024 – Present</p>
+                    <ul className="list-disc list-inside text-gray-600 space-y-2">
+                      <li>Developed mobile and web applications using React Native, React.js, and Next.js</li>
+                      <li>Created reusable UI components and responsive layouts for cross-platform compatibility</li>
+                      <li>Integrated Firebase Authentication and Supabase for secure data storage and backend services</li>
+                      <li>Worked with REST APIs using Node.js and Express for data handling and user interactions</li>
+                      <li>Implemented features such as role-based access control, image uploads, and GPS location usage</li>
+                      <li>Used Git and GitHub for version control and project management</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Languages */}
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <span className="w-1 h-8 bg-blue-600 rounded-full"></span>
+                  Languages
+                </h2>
+
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { name: 'English', level: 'Fluent', percentage: 90 },
+                    { name: 'Urdu', level: 'Native', percentage: 100 },
+                    { name: 'Punjabi', level: 'Native', percentage: 100 },
+                  ].map((lang, index) => (
+                    <div key={index} className="text-center">
+                      <div className="font-bold mb-1">{lang.name}</div>
+                      <div className="text-sm text-gray-600 mb-2">{lang.level}</div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-blue-600 h-2 rounded-full"
+                          style={{ width: `${lang.percentage}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Right Column - Profile & CTA */}
-        <div className="space-y-8">
-          {/* Profile Picture */}
-          <div className="text-center">
-            <div
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl mx-auto"
-              style={{ border: "3px solid #FFD700" }}
+      {/* Call to Action */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            I'm currently looking for internship opportunities. Feel free to reach out!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center gap-2"
             >
-              <Image
-                src="/images/profile/profile.jpeg"
-                alt="Muhammad Usman"
-                width={256}
-                height={256}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Availability Badge */}
-            <div className="flex items-center justify-center mt-4">
-              <span className="w-3 h-3 bg-orange-500 rounded-full animate-pulse block"></span>
-              <span
-                className="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-md"
-                style={{ fontWeight: "900" }}
-              >
-                Available for new opportunities
-              </span>
-            </div>
-          </div>
-
-          {/* Connect Section */}
-          <div
-            className="p-6 rounded-xl"
-            style={{
-              backgroundColor: "#000000",
-              border: "3px solid #FFD700",
-            }}
-          >
-            <h2 className="text-2xl font-bold mb-2" style={{ color: '#ffffff' }}>Let's Connect</h2>
-            <p className="mb-4" style={{ color: '#ffffff' }}>
-              I am open to internships, junior developer roles, freelance work, and
-              collaborative projects. Feel free to explore my work or get in touch.
-            </p>
-
-           {/* Buttons */}
-<div className="flex flex-row items-center justify-center mt-8 mb-6" style={{ gap: '3rem' }}>
-  {/* Hire Me Button */}
-  <Link
-    href="/contact"
-    style={{
-      backgroundColor: "#FFD700",
-      color: "black",
-      padding: "0.75rem 1.5rem",
-      borderRadius: "9999px",
-      fontWeight: "bold",
-      fontSize: "0.875rem",
-      textTransform: "uppercase",
-      letterSpacing: "0.05em",
-      border: "2px solid #FFD700",
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-      textDecoration: "none",
-      display: "inline-block",
-      width: "180px",
-      textAlign: "center",
-      transition: "all 0.3s ease",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor = "black";
-      e.currentTarget.style.color = "#FFD700";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.backgroundColor = "#FFD700";
-      e.currentTarget.style.color = "black";
-    }}
-  >
-    Hire Me
-  </Link>
-
-  {/* Download CV Button */}
-  <Link
-    href="/resume.pdf"
-    target="_blank"
-    style={{
-      backgroundColor: "black",
-      color: "#FFD700",
-      padding: "0.75rem 1.5rem",
-      borderRadius: "9999px",
-      fontWeight: "bold",
-      fontSize: "0.875rem",
-      textTransform: "uppercase",
-      letterSpacing: "0.05em",
-      border: "2px solid #FFD700",
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-      textDecoration: "none",
-      display: "inline-block",
-      width: "180px",
-      textAlign: "center",
-      transition: "all 0.3s ease",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor = "#FFD700";
-      e.currentTarget.style.color = "black";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.backgroundColor = "black";
-      e.currentTarget.style.color = "#FFD700";
-    }}
-  >
-    Download CV
-  </Link>
-</div>
+              <Mail size={20} />
+              Contact Me
+            </Link>
+            <Link
+              href="/projects"
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center gap-2"
+            >
+              <Code size={20} />
+              View My Work
+            </Link>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

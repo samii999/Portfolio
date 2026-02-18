@@ -1,203 +1,183 @@
-"use client";
-
-import Image from 'next/image';
+// src/app/page.tsx
 import Link from 'next/link';
-import { Playfair_Display, Inter } from 'next/font/google';
+import Image from 'next/image';
+import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 
-const serif = Playfair_Display({ subsets: ['latin'], style: 'italic' });
-const sans = Inter({ subsets: ['latin'], weight: ['900'] });
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="relative overflow-x-hidden pt-96 sm:pt-[28rem]">
-      {/* HERO SECTION */}
-      <section className="relative w-full max-w-7xl mx-auto flex items-center justify-between gap-16" style={{ paddingLeft: '4rem', paddingRight: '4rem' }}>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            {/* Left Content */}
+            <div className="flex-1 text-center md:text-left order-2 md:order-1">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                Hi, I'm{' '}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Muhammad Usman
+                </span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-gray-600 mb-4">
+                Computer Science Graduate
+              </p>
+              
+              <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                Web & Mobile App Developer specializing in React, Next.js, and React Native
+              </p>
 
-        {/* Left: Text Content */}
-        <div className="flex-1 flex flex-col items-start gap-4" style={{ marginTop: '-4rem' }}>
-          {/* Top Left: Hey there */}
-          <h2 className={`${serif.className} text-[3rem] md:text-[4.5rem] font-bold text-black`}>
-            Hey, there
-          </h2>
-
-          {/* Bottom Left: Name */}
-          <h1 className={`${sans.className} text-[2rem] md:text-[3rem] lg:text-[4rem] leading-tight uppercase tracking-tighter text-black`}>
-            I AM MUHAMMAD USMAN
-          </h1>
-
-          {/* Role */}
-          <h2 className={`${sans.className} text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter text-black`}>
-            WEB & APP DEVELOPER & UI/UX DESIGNER
-          </h2>
-
-          {/* View My Work Button */}
-          <Link 
-            href="/projects" 
-            style={{
-              backgroundColor: 'black',
-              color: 'white',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '9999px',
-              fontWeight: 'bold',
-              fontSize: '0.875rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              border: '2px solid #FCD34D',
-              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-              transition: 'all 0.3s ease',
-              marginTop: '0.5rem'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#FCD34D';
-              e.currentTarget.style.color = 'black';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'black';
-              e.currentTarget.style.color = 'white';
-            }}
-          >
-            View My projects
-          </Link>
-        </div>
-
-        {/* Middle: Hero Profile Picture and Badge */}
-        <div className="relative flex flex-col items-center" style={{ marginTop: '4rem' }}>
-          <div className="relative w-[280px] md:w-[320px] lg:w-[380px] h-[280px] md:h-[320px] lg:h-[380px] rounded-full overflow-hidden shadow-2xl border-4 border-yellow-400 flex-shrink-0">
-            <Image
-              src="/images/profile/profile.jpeg"
-              alt="Muhammad Usman"
-              fill
-              className="w-full h-full object-cover"
-              priority
-            />
-          </div>
-          
-          {/* Badge Below Profile Picture */}
-          <div className="flex items-center">
-            <span className="w-3 h-3 bg-orange-500 rounded-full animate-pulse block"></span>
-            <span className="bg-white/90 text-black px-4 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide shadow-md" style={{ fontWeight: '900' }}>
-              Available for new opportunities
-            </span>
-          </div>
-
-          {/* Description Under Badge */}
-          <p className="text-sm md:text-base font-medium text-gray-700 text-center mt-4">
-            Specialized in Web & App Development, UI/UX, and Modern Solutions.
-          </p>
-
-          {/* Statistics Section */}
-          <div className="flex flex-col items-center space-y-4 mb-8" style={{ marginTop: '60px' }}>
-            <div className="flex justify-center" style={{ gap: '6rem' }}>
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <span className="text-3xl md:text-4xl text-black" style={{ fontWeight: '900' }}>3+</span>
-                <span className="text-sm md:text-base text-black" style={{ fontWeight: '900' }}>Experiences</span>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+                <Link 
+                  href="/projects" 
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  View My Work
+                  <ArrowRight size={20} />
+                </Link>
+                
+                <Link 
+                  href="/resume.pdf" 
+                  target="_blank"
+                  className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <Download size={20} />
+                  Download Resume
+                </Link>
               </div>
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <span className="text-3xl md:text-4xl text-black" style={{ fontWeight: '900' }}>4+</span>
-                <span className="text-sm md:text-base text-black" style={{ fontWeight: '900' }}>Projects</span>
-              </div>
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <span className="text-3xl md:text-4xl text-black" style={{ fontWeight: '900' }}>40+</span>
-                <span className="text-sm md:text-base text-black" style={{ fontWeight: '900' }}>Happy Clients</span>
+
+              {/* Social Links */}
+              <div className="flex gap-4 justify-center md:justify-start">
+                <Link 
+                  href="https://github.com/samii999" 
+                  target="_blank"
+                  className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github size={20} />
+                </Link>
+                <Link 
+                  href="https://www.linkedin.com/in/muhammad-usman-004b363a4/" 
+                  target="_blank"
+                  className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} />
+                </Link>
+                <Link 
+                  href="mailto:um558899@gmail.com"
+                  className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-colors"
+                  aria-label="Email"
+                >
+                  <Mail size={20} />
+                </Link>
               </div>
             </div>
-          </div>
-        </div>
-        {/* Right: Skill Orbs Column */}
-        <div className="flex-1" style={{display:'flex',flexDirection:'column',alignItems:'end',justifyContent:'start',paddingLeft:'0.5rem'}}>
-          {/* Skills Grid */}
-          <div style={{display:'flex',flexDirection:'column',gap:'2rem',marginTop:'2rem'}}>
-            {/* First Row - 4 skills */}
-            <div style={{display:'flex',justifyContent:'end',columnGap:'2.5rem',alignItems:'center'}}>
-              {/* React Native */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>RN</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>React Native</span>
-              </div>
-              
-              {/* Next.js */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>N</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>Next.js</span>
-              </div>
-              
-              {/* Python */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>PY</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>Python</span>
-              </div>
-              
-              {/* AI */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>AI</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>AI</span>
-              </div>
-            </div>
-            
-            {/* Second Row - 4 skills */}
-            <div style={{display:'flex',justifyContent:'end',columnGap:'2.5rem',alignItems:'center'}}>
-              {/* GitHub */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>GH</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>GitHub</span>
-              </div>
-              
-              {/* Figma */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>F</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>Figma</span>
-              </div>
-              
-              {/* Firebase */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>FB</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>Firebase</span>
-              </div>
-              
-              {/* Supabase */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>SB</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>Supabase</span>
-              </div>
-            </div>
-            
-            {/* Third Row - 2 skills */}
-            <div style={{display:'flex',justifyContent:'end',columnGap:'2.5rem',alignItems:'center'}}>
-              {/* HTML5 */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>H5</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>HTML5</span>
-              </div>
-              
-              {/* CSS3 */}
-              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <div style={{width:'72px',height:'72px',borderRadius:'50%',border:'4px solid #FCD34D',background:'black',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'0.5rem'}}>
-                  <span style={{color:'white',fontSize:'0.75rem',fontWeight:'bold'}}>C3</span>
-                </div>
-                <span style={{fontSize:'0.75rem',color:'black',fontWeight:'600'}}>CSS3</span>
+
+            {/* Right Image */}
+            <div className="flex-1 relative order-1 md:order-2">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+                <Image
+                  src="/images/profile/profile.jpeg"
+                  alt="Muhammad Usman"
+                  fill
+                  className="rounded-full object-cover border-4 border-white shadow-xl"
+                  priority
+                />
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-400 rounded-full opacity-20 animate-pulse"></div>
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-purple-400 rounded-full opacity-20 animate-pulse delay-700"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Quick Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            <div className="text-center p-6">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">6+</div>
+              <div className="text-gray-600 text-sm md:text-base">Projects</div>
+            </div>
+            <div className="text-center p-6">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">4+</div>
+              <div className="text-gray-600 text-sm md:text-base">Technologies</div>
+            </div>
+            <div className="text-center p-6">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">1+</div>
+              <div className="text-gray-600 text-sm md:text-base">Year Experience</div>
+            </div>
+            <div className="text-center p-6">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">2</div>
+              <div className="text-gray-600 text-sm md:text-base">Major Projects</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Preview Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <h2 className="text-3xl font-bold mb-4">About Me</h2>
+              <p className="text-gray-600 mb-4">
+                Computer Science graduate from COMSATS University with strong foundational knowledge 
+                of web and mobile application development.
+              </p>
+              <p className="text-gray-600 mb-6">
+                Hands-on experience with React Native, React.js, and Next.js through academic and 
+                personal projects. Developed a full-featured Final Year Project involving authentication, 
+                role-based access control, APIs, and AI-assisted image classification.
+              </p>
+              <Link 
+                href="/about" 
+                className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center gap-1"
+              >
+                Read More <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="flex-1 grid grid-cols-2 gap-4">
+              <div className="bg-blue-50 p-6 rounded-lg text-center">
+                <div className="text-2xl font-bold text-blue-600 mb-2">Web</div>
+                <div className="text-gray-600">React & Next.js</div>
+              </div>
+              <div className="bg-purple-50 p-6 rounded-lg text-center">
+                <div className="text-2xl font-bold text-purple-600 mb-2">Mobile</div>
+                <div className="text-gray-600">React Native</div>
+              </div>
+              <div className="bg-green-50 p-6 rounded-lg text-center">
+                <div className="text-2xl font-bold text-green-600 mb-2">Backend</div>
+                <div className="text-gray-600">Node.js & APIs</div>
+              </div>
+              <div className="bg-orange-50 p-6 rounded-lg text-center">
+                <div className="text-2xl font-bold text-orange-600 mb-2">AI/ML</div>
+                <div className="text-gray-600">Image Classification</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
+          <p className="text-blue-100 mb-8 text-lg">
+            I'm currently looking for internship opportunities. Feel free to reach out!
+          </p>
+          <Link 
+            href="/contact" 
+            className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+          >
+            Get In Touch
+            <Mail size={20} />
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

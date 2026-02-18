@@ -1,36 +1,77 @@
-export const projects = [
+// src/data/projects.ts
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription?: string;
+  images: string[];
+  videoLink?: string;
+  githubLink?: string;
+  liveLink?: string;
+  technologies: string[];
+  category: 'fyp' | 'personal' | 'game';
+}
+
+export const projects: Project[] = [
   {
-    id: "fixora",
-    title: "Fixora – AI-Powered Civic Issue Reporting App",
-    shortDescription: "A mobile app for reporting public issues with images, discription and location AI classify them.",
-    description:
-      "Fixora is a smart civic issue reporting system developed as a Final Year Project. It enables users to report problems such as road damage, garbage, and water leakage by submitting images with GPS-based location data. The system includes role-based dashboards for admins and staff to efficiently track, manage, and resolve reported issues. Integrated AI models assist in automatic issue categorization, image-based validation, and prioritization to improve response time and decision-making",
+    id: 'fixora',
+    title: 'Fixora - AI-Powered Mobile Issue Reporting App',
+    description: 'A cross-platform mobile app for reporting issues with AI-powered image classification',
+    longDescription: 'Built a cross-platform mobile app using React Native and Expo. Implemented authentication and role-based access for Users, Staff, and Admins. Integrated Supabase for data storage and GPS-based issue tracking. Trained and integrated a machine learning model for image classification and issue categorization.',
     images: [
-      "/images/projects/screen1.jpeg",
-      "/images/projects/screen2.jpeg",
-      "/images/projects/screen3.jpeg",
-      "/images/projects/screen4.jpeg",
+      '/images/projects/fixora/screen1.jpeg',
+      '/images/projects/fixora/screen2.jpeg',
+      '/images/projects/fixora/screen3.jpeg',
+      '/images/projects/fixora/screen4.jpeg',
     ],
-    techStack: ["React Native", "Expo", "Firebase", "Supabase", "AI Models"],
-    github: "https://github.com/samii999/Fixora_fyp.git",
-    video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/2320509371787323/",
-    featured: true,
+    videoLink: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/share/r/1LuTsvDubY/',
+    githubLink: 'https://github.com/samii999/fixora',
+    technologies: ['React Native', 'Expo', 'Supabase', 'Machine Learning', 'GPS', 'Authentication'],
+    category: 'fyp',
   },
   {
-    id: "ai-word-chain",
-    title: "AI Word Chain Game",
-    shortDescription: "An interactive web-based game where users play against an AI that generates valid word responses in real time.",
-    description:
-      "AI Word Chain Game is an interactive web-based game developed using Flask and Python. The application runs on a local development server (localhost:5000) and allows users to play against an AI that generates valid word responses in real time. The project demonstrates backend logic handling, AI-based word validation, and smooth frontend–backend communication. This project was created for learning, experimentation, and portfolio demonstration purposes.",
+    id: 'rescov',
+    title: 'Rescov - AI Resume & Cover Letter Builder',
+    description: 'Real-time AI-powered resume generator with smart suggestions',
+    longDescription: 'Built a real-time AI-powered resume & cover letter generator using Next.js and AI LLM integration. Added live preview, smart suggestions, and structured templates for professional resumes.',
     images: [
-      "/images/projects/gametwiceword.png",
-      "/images/projects/invalidword.png",
-      "/images/projects/pausegame.png",
-      "/images/projects/timesup.png",
+      '/images/projects/rescov/home page.png',
+      '/images/projects/rescov/perview page.png',
+      '/images/projects/rescov/template page.png',
     ],
-    techStack: ["Flask", "Python", "HTML", "CSS", "JavaScript", "AI/ML"],
-    github: "https://github.com/samii999/ai-word-chain-game.git",
-    video: "https://www.youtube.com/embed/QOoZslxAc-s",
-    featured: false,
+    githubLink: 'https://github.com/samii999/Rescov_AI_Resume',
+    technologies: ['Next.js', 'AI LLM', 'TypeScript', 'Tailwind CSS', 'OpenAI'],
+    category: 'personal',
+  },
+  {
+    id: 'wordchain',
+    title: 'WordChain Game Collection',
+    description: 'Interactive word games with various challenges and game modes',
+    longDescription: 'A collection of interactive word games built with React, featuring multiple game modes including word validation, time-based challenges, and pause functionality. Each game demonstrates different React concepts and state management techniques.',
+    images: [
+      '/images/projects/gametwiceword.png',
+      '/images/projects/invalidword.png',
+      '/images/projects/pausegame.png',
+      '/images/projects/timesup.png'
+    ],
+    videoLink: 'https://www.youtube.com/embed/QOoZslxAc-s',
+    githubLink: 'https://github.com/samii999/ai-game-website',
+    technologies: ['React', 'JavaScript', 'CSS', 'State Management', 'Game Logic', 'Timers'],
+    category: 'game',
+  },
+  {
+    id: 'tensesurdu',
+    title: 'TensesUrdu - English Tenses in Urdu',
+    description: 'Next.js web app teaching English tenses in Urdu with SEO optimization',
+    longDescription: 'Next.js/TypeScript web app teaching English tenses in Urdu – built for hands-on SEO practice with complete sitemap, robots.txt, and keyword-optimized content structure.',
+    images: [
+      '/images/projects/tensesurdu/first.png',
+      '/images/projects/tensesurdu/second.png',
+      '/images/projects/tensesurdu/third.png'
+    ],
+    githubLink: 'https://github.com/samii999/tenses-learning-urdu',
+    liveLink: 'https://tensesurdu.vercel.app',
+    technologies: ['Next.js', 'TypeScript', 'SEO', 'Tailwind CSS', 'Vercel'],
+    category: 'personal',
   },
 ];
