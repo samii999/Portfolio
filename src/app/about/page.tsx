@@ -120,8 +120,7 @@ export default function AboutPage() {
                   <p className="text-green-600 font-semibold mb-2">Attock Campus</p>
                   <p className="text-gray-700 mb-3">Bachelor of Science in Computer Science (BSCS)</p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">2020 - 2024</span>
-                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">CGPA: 3.5/4.0</span>
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">2022 - 2026</span>
                   </div>
                   
                   <h4 className="font-semibold mb-2">Relevant Coursework:</h4>
