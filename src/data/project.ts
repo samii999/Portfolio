@@ -74,4 +74,21 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'TypeScript', 'SEO', 'Tailwind CSS', 'Vercel'],
     category: 'personal',
   },
+  {
+    id: 'kamimobileshop',
+    title: 'KAMI MobileShop - E-Commerce Platform',
+    description: 'Full-Stack E-Commerce Platform with admin dashboard and real-time notifications',
+    longDescription: 'Built with Next.js 16, TypeScript, Tailwind CSS, and Supabase featuring secure admin authentication, real-time order notifications, multi-file printing service with individual settings, and complete product/order management system.',
+    images: [
+      '/images/projects/ecommerce/e1.png',
+      '/images/projects/ecommerce/e2.png',
+      '/images/projects/ecommerce/e3.png',
+      '/images/projects/ecommerce/e4.png',
+      '/images/projects/ecommerce/e5.png'
+    ],
+    githubLink: 'https://github.com/samii999/Ecommerce-Store',
+    liveLink: 'https://kami-mobileshop.vercel.app/',
+    technologies: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Admin Auth', 'Real-time Notifications'],
+    category: 'personal',
+  },
 ];
