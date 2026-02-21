@@ -84,7 +84,6 @@ export const projects: Project[] = [
       '/images/projects/ecommerce/e2.png',
       '/images/projects/ecommerce/e3.png',
       '/images/projects/ecommerce/e4.png',
-      '/images/projects/ecommerce/e5.png',
     ],
     githubLink: 'https://github.com/samii999/Ecommerce-Store',
     liveLink: 'https://kami-mobileshop.vercel.app/',
