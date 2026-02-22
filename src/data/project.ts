@@ -9,7 +9,7 @@ export interface Project {
   githubLink?: string;
   liveLink?: string;
   technologies: string[];
-  category: 'fyp' | 'personal' | 'game';
+  category: 'fyp' | 'personal' | 'game' | 'professional';
 }
 
 export const projects: Project[] = [
@@ -62,8 +62,8 @@ export const projects: Project[] = [
   {
     id: 'tensesurdu',
     title: 'TensesUrdu - English Tenses in Urdu',
-    description: 'Next.js web app teaching English tenses in Urdu with SEO optimization',
-    longDescription: 'Next.js/TypeScript web app teaching English tenses in Urdu – built for hands-on SEO practice with complete sitemap, robots.txt, and keyword-optimized content structure.',
+    description: 'Client project: Next.js web app teaching English tenses in Urdu with SEO optimization',
+    longDescription: 'Client project: Next.js/TypeScript web app teaching English tenses in Urdu – built for hands-on SEO practice with complete sitemap, robots.txt, and keyword-optimized content structure.',
     images: [
       '/images/projects/tensesurdu/first.png',
       '/images/projects/tensesurdu/second.png',
@@ -72,13 +72,13 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/samii999/tenses-learning-urdu',
     liveLink: 'https://tensesurdu.vercel.app',
     technologies: ['Next.js', 'TypeScript', 'SEO', 'Tailwind CSS', 'Vercel'],
-    category: 'personal',
+    category: 'professional',
   },
   {
     id: 'kamimobileshop',
     title: 'KAMI MobileShop - E-Commerce Platform',
-    description: 'Full-Stack E-Commerce Platform with admin dashboard and real-time notifications',
-    longDescription: 'Built with Next.js 16, TypeScript, Tailwind CSS, and Supabase featuring secure admin authentication, real-time order notifications, multi-file printing service with individual settings, and complete product/order management system.',
+    description: 'Client project: Full-Stack E-Commerce Platform with admin dashboard and real-time notifications',
+    longDescription: 'Client project: Built with Next.js 16, TypeScript, Tailwind CSS, and Supabase featuring secure admin authentication, real-time order notifications, multi-file printing service with individual settings, and complete product/order management system.',
     images: [
       '/images/projects/ecommerce/e1.png',
       '/images/projects/ecommerce/e2.png',
@@ -88,6 +88,6 @@ export const projects: Project[] = [
     githubLink: 'https://github.com/samii999/Ecommerce-Store',
     liveLink: 'https://kami-mobileshop.vercel.app/',
     technologies: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Admin Auth', 'Real-time Notifications'],
-    category: 'personal',
+    category: 'professional',
   },
 ];

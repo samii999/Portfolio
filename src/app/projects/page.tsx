@@ -12,6 +12,7 @@ export default function ProjectsPage() {
     { id: 'all', name: 'All Projects' },
     { id: 'fyp', name: 'Final Year Project' },
     { id: 'personal', name: 'Personal Projects' },
+    { id: 'professional', name: 'Professional Work' },
     { id: 'game', name: 'Games' },
   ];
 
