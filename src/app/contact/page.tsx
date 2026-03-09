@@ -8,58 +8,14 @@ import {
   Phone, 
   MapPin, 
   Github, 
-  Linkedin, 
-  Send,
-  CheckCircle,
-  AlertCircle,
+  Linkedin,
   Clock,
-  MessageSquare
+  MessageSquare,
+  Briefcase,
+  Code
 } from 'lucide-react';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const [formStatus, setFormStatus] = useState<{
-    type: 'success' | 'error' | null;
-    message: string;
-  }>({ type: null, message: '' });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus({ type: null, message: '' });
-
-    // Simulate form submission
-    try {
-      // Here you would typically send the data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setFormStatus({
-        type: 'success',
-        message: 'Thank you for your message! I will get back to you soon.'
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      setFormStatus({
-        type: 'error',
-        message: 'Something went wrong. Please try again later.'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const contactInfo = [
     {
@@ -206,131 +162,13 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contact Information & Why Contact Me */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-2xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                   <span className="w-1 h-8 bg-green-600 rounded-full"></span>
-                  Send Me a Message
+                  Why Contact Me?
                 </h2>
-
-                {/* Status Message */}
-                {formStatus.type && (
-                  <div className={`mb-6 p-4 rounded-lg flex items-start gap-3 ${
-                    formStatus.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-                  }`}>
-                    {formStatus.type === 'success' ? (
-                      <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                    ) : (
-                      <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                    )}
-                    <p>{formStatus.message}</p>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name Field */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  {/* Subject Field */}
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject *
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="Internship Opportunity">Internship Opportunity</option>
-                      <option value="Project Collaboration">Project Collaboration</option>
-                      <option value="Job Opportunity">Job Opportunity</option>
-                      <option value="Question">Question</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-
-                  {/* Message Field */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
-                      placeholder="Tell me about your project or opportunity..."
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </button>
-
-                  {/* Form Footer */}
-                  <p className="text-sm text-gray-500 text-center mt-4">
-                    * Required fields. I'll get back to you within 24 hours.
-                  </p>
-                </form>
-              </div>
-
-              {/* Map or Additional Info */}
-              <div className="mt-8 bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-lg font-semibold mb-4">Why Contact Me?</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
                     {
@@ -404,6 +242,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-// Import missing icons
-import { Briefcase, Code } from 'lucide-react';
