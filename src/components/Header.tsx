@@ -4,6 +4,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,81 +21,148 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-lg sticky top-0 z-50">
+    <motion.header 
+      className="bg-gradient-to-r from-black via-gray-900 to-black shadow-lg shadow-yellow-500/20 border-b border-yellow-400/20 sticky top-0 z-50"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-white hover:text-blue-400 transition-colors">
-            Muhammad Usman
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link 
+              href="/" 
+              className="text-xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent hover:from-yellow-300 hover:to-amber-700 transition-all flex items-center gap-2"
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                <Sparkles className="w-5 h-5" />
+              </motion.div>
+              <span>Muhammad Usman</span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.path}
-                href={item.path}
-                className={`${
-                  pathname === item.path
-                    ? 'text-blue-400 font-medium'
-                    : 'text-gray-300 hover:text-blue-400'
-                } transition-colors`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                {item.name}
-              </Link>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    href={item.path}
+                    className={`relative px-3 py-2 rounded-lg transition-all ${
+                      pathname === item.path
+                        ? 'text-black bg-gradient-to-r from-yellow-400 to-amber-600 font-bold shadow-lg shadow-yellow-500/25'
+                        : 'text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30'
+                    }`}
+                  >
+                    {item.name}
+                    {pathname === item.path && (
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-lg opacity-20 blur-sm"
+                        layoutId="activeTab"
+                        transition={{
+                          type: "spring",
+                          stiffness: 500,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              </motion.div>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white"
+            className="md:hidden p-2 text-gray-300 hover:text-yellow-400 transition-colors relative"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <motion.div
+              animate={{
+                rotate: isMenuOpen ? 180 : 0,
+              }}
+              transition={{ duration: 0.3 }}
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </motion.div>
+          </motion.button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-700">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={`block py-2 ${
-                  pathname === item.path
-                    ? 'text-blue-400 font-medium'
-                    : 'text-gray-300 hover:text-blue-400'
-                } transition-colors`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-        )}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-gradient-to-b from-gray-800/90 to-gray-900/90 backdrop-blur-sm border-t border-yellow-400/20"
+            >
+              <nav className="px-4 py-4">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Link
+                        href={item.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`block py-3 px-4 rounded-lg transition-all relative ${
+                          pathname === item.path
+                            ? 'text-white bg-gradient-to-r from-yellow-400 to-amber-600 font-bold shadow-lg shadow-yellow-500/25'
+                            : 'text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30'
+                        }`}
+                      >
+                        {item.name}
+                        {pathname === item.path && (
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-lg opacity-20 blur-sm"
+                            layoutId={`mobileActiveTab`}
+                            transition={{
+                              type: "spring",
+                              stiffness: 500,
+                              damping: 30
+                            }}
+                          />
+                        )}
+                      </Link>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }

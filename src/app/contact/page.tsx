@@ -23,7 +23,7 @@ import { useRef, useEffect } from 'react';
 function FloatingElements() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(10)].map((_, i) => {
+      {[...Array(4)].map((_, i) => {
         const seed = i * 54321;
         const x = ((seed * 7) % 10000) / 100;
         const y = ((seed * 11) % 10000) / 100;
@@ -31,20 +31,20 @@ function FloatingElements() {
         return (
           <motion.div
             key={`float-${i}`}
-            className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-25"
             style={{
               left: `${x}%`,
               top: `${y}%`,
             }}
             animate={{
-              y: [0, -25, 0],
-              opacity: [0.3, 0.6, 0.3],
-              scale: [1, 1.3, 1],
+              y: [0, -12, 0],
+              opacity: [0.25, 0.4, 0.25],
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              duration: 3 + i * 0.4,
+              duration: 1.5 + i * 0.2,
               repeat: Infinity,
-              delay: i * 0.2,
+              delay: i * 0.1,
               ease: "easeInOut"
             }}
           />

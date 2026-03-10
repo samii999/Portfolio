@@ -7,7 +7,7 @@ import { ArrowRight, Download, Github, Linkedin, Mail, Code, Smartphone, Server,
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
-function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
+function AnimatedCounter({ target, duration = 600 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -34,13 +34,13 @@ function AnimatedCounter({ target, duration = 2000 }: { target: number; duration
 
 function ParticleBackground() {
   // Generate deterministic positions based on index to avoid hydration mismatch
-  const particles = Array.from({ length: 30 }, (_, i) => {
+  const particles = Array.from({ length: 8 }, (_, i) => {
     const seed = i * 9301 + 49297; // Simple seed for pseudo-randomness
     const x = ((seed * 9301 + 49297) % 10000) / 100;
     const y = ((seed * 23333 + 49991) % 10000) / 100;
-    const duration = 3 + ((seed * 7) % 4);
-    const delay = ((seed * 13) % 20) / 10;
-    const size = 1 + ((seed * 3) % 3); // Variable sizes
+    const duration = 1.5 + ((seed * 7) % 1);
+    const delay = ((seed * 13) % 5) / 10;
+    const size = 1; // Fixed size for performance
     
     return {
       id: i,
@@ -76,22 +76,22 @@ function ParticleBackground() {
             opacity: 0
           }}
           animate={{ 
-            x: [`${particle.x}%`, `${particle.endX}%`, `${(particle.x + particle.endX) / 2}%`],
-            y: [`${particle.y}%`, `${particle.endY}%`, `${(particle.y + particle.endY) / 2}%`],
-            scale: [0, 1, 0.5, 0],
-            opacity: [0, 0.6, 0.3, 0]
+            x: [`${particle.x}%`, `${particle.endX}%`],
+            y: [`${particle.y}%`, `${particle.endY}%`],
+            scale: [0, 0.8, 0],
+            opacity: [0, 0.3, 0]
           }}
           transition={{ 
             duration: particle.duration,
             repeat: Infinity,
             delay: particle.delay,
-            ease: "easeInOut"
+            ease: "linear"
           }}
         />
       ))}
       
       {/* Geometric shapes */}
-      {[...Array(6)].map((_, i) => {
+      {[...Array(3)].map((_, i) => {
         const seed = i * 12345;
         const x = ((seed * 7) % 10000) / 100;
         const y = ((seed * 11) % 10000) / 100;
@@ -111,19 +111,19 @@ function ParticleBackground() {
               opacity: 0
             }}
             animate={{ 
-              rotate: [0, rotation, rotation * 2],
-              scale: [0, 1, 0.5, 0],
-              opacity: [0, 0.2, 0.1, 0]
+              rotate: [0, rotation],
+              scale: [0, 0.8, 0],
+              opacity: [0, 0.1, 0]
             }}
             transition={{ 
-              duration: 8 + i * 2,
+              duration: 3 + i,
               repeat: Infinity,
-              delay: i * 1.5,
+              delay: i * 0.5,
               ease: "linear"
             }}
           >
             <div 
-              className="w-8 h-8 border border-yellow-400/20"
+              className="w-6 h-6 border border-yellow-400/15"
               style={{
                 clipPath: i % 2 === 0 ? "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" : "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)"
               }}
@@ -131,16 +131,16 @@ function ParticleBackground() {
           </motion.div>
         );
       })}
-      
+
       {/* Light rays */}
-      {[...Array(3)].map((_, i) => (
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={`ray-${i}`}
-          className="absolute h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent"
+          className="absolute h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent"
           style={{
-            width: "200px",
-            left: `${20 + i * 30}%`,
-            top: `${30 + i * 15}%`,
+            width: "150px",
+            left: `${25 + i * 25}%`,
+            top: `${35 + i * 20}%`,
             transformOrigin: "left center",
           }}
           initial={{ 
@@ -149,15 +149,15 @@ function ParticleBackground() {
             rotate: i * 30
           }}
           animate={{ 
-            scaleX: [0, 1, 0],
-            opacity: [0, 0.5, 0],
-            rotate: [i * 30, i * 30 + 45, i * 30 + 90]
+            scaleX: [0, 0.8, 0],
+            opacity: [0, 0.2, 0],
+            rotate: [i * 30, i * 30 + 30]
           }}
           transition={{ 
-            duration: 4 + i,
+            duration: 1.5 + i,
             repeat: Infinity,
-            delay: i * 2,
-            ease: "easeInOut"
+            delay: i * 0.8,
+            ease: "linear"
           }}
         />
       ))}
@@ -188,7 +188,7 @@ export default function Home() {
               className="flex-1 text-center md:text-left order-2 md:order-1"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <motion.h1 
                 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6"
@@ -199,7 +199,7 @@ export default function Home() {
                   className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent relative"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                  transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
                 >
                   Muhammad Usman
                   {/* Glitch effect overlay */}
@@ -225,7 +225,7 @@ export default function Home() {
                 className="text-xl md:text-2xl text-gray-300 mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
               >
                 Computer Science Graduate
               </motion.p>
@@ -234,7 +234,7 @@ export default function Home() {
                 className="text-lg text-gray-400 mb-8 max-w-lg mx-auto md:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
               >
                 Web & Mobile App Developer specializing in React, Next.js, and React Native
               </motion.p>
@@ -244,7 +244,7 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
               >
                 <motion.div 
                   whileHover={{ scale: 1.05, rotate: 1 }} 
@@ -272,7 +272,7 @@ export default function Home() {
                         x: [0, 3, 0],
                       }}
                       transition={{
-                        duration: 1,
+                        duration: 0.6,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
@@ -284,7 +284,7 @@ export default function Home() {
                         x: [0, 5, 0],
                       }}
                       transition={{
-                        duration: 1,
+                        duration: 0.6,
                         repeat: Infinity,
                         ease: "easeInOut",
                         delay: 0.2

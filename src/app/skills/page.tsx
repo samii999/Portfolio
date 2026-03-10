@@ -8,7 +8,7 @@ import { Code, Server, Smartphone, Wrench, Award, BookOpen, Sparkles, Zap } from
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 
-function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
+function AnimatedCounter({ target, duration = 600 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -36,7 +36,7 @@ function AnimatedCounter({ target, duration = 2000 }: { target: number; duration
 function FloatingElements() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(12)].map((_, i) => {
+      {[...Array(4)].map((_, i) => {
         const seed = i * 54321;
         const x = ((seed * 7) % 10000) / 100;
         const y = ((seed * 11) % 10000) / 100;
@@ -44,20 +44,20 @@ function FloatingElements() {
         return (
           <motion.div
             key={`float-${i}`}
-            className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-25"
             style={{
               left: `${x}%`,
               top: `${y}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 0.7, 0.3],
-              scale: [1, 1.5, 1],
+              y: [0, -15, 0],
+              opacity: [0.25, 0.4, 0.25],
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              duration: 4 + i * 0.5,
+              duration: 1.8 + i * 0.2,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 0.1,
               ease: "easeInOut"
             }}
           />
