@@ -30,13 +30,10 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div>
             <Link 
               href="/" 
-              className="text-xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent hover:from-yellow-300 hover:to-amber-700 transition-all flex items-center gap-2"
+              className="text-xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent flex items-center gap-2 relative"
             >
               <motion.div
                 animate={{
@@ -51,6 +48,7 @@ export default function Header() {
                 <Sparkles className="w-5 h-5" />
               </motion.div>
               <span>Muhammad Usman</span>
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-amber-600"></div>
             </Link>
           </motion.div>
 
@@ -63,29 +61,18 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.div>
                   <Link
                     href={item.path}
-                    className={`relative px-3 py-2 rounded-lg transition-all ${
+                    className={`relative px-3 py-2 ${
                       pathname === item.path
-                        ? 'text-black bg-gradient-to-r from-yellow-400 to-amber-600 font-bold shadow-lg shadow-yellow-500/25'
-                        : 'text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30'
+                        ? 'text-yellow-400 font-bold'
+                        : 'text-gray-300'
                     }`}
                   >
                     {item.name}
                     {pathname === item.path && (
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-lg opacity-20 blur-sm"
-                        layoutId="activeTab"
-                        transition={{
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 30
-                        }}
-                      />
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-amber-600"></div>
                     )}
                   </Link>
                 </motion.div>
@@ -97,8 +84,6 @@ export default function Header() {
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-gray-300 hover:text-yellow-400 transition-colors relative"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
           >
             <motion.div
               animate={{
@@ -129,30 +114,19 @@ export default function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.02, x: 5 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
+                    <motion.div>
                       <Link
                         href={item.path}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`block py-3 px-4 rounded-lg transition-all relative ${
+                        className={`block py-3 px-4 relative ${
                           pathname === item.path
-                            ? 'text-white bg-gradient-to-r from-yellow-400 to-amber-600 font-bold shadow-lg shadow-yellow-500/25'
-                            : 'text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30'
+                            ? 'text-yellow-400 font-bold'
+                            : 'text-gray-300'
                         }`}
                       >
                         {item.name}
                         {pathname === item.path && (
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-lg opacity-20 blur-sm"
-                            layoutId={`mobileActiveTab`}
-                            transition={{
-                              type: "spring",
-                              stiffness: 500,
-                              damping: 30
-                            }}
-                          />
+                          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-amber-600"></div>
                         )}
                       </Link>
                     </motion.div>
