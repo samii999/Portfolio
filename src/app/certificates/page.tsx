@@ -22,7 +22,7 @@ export default function CertificatesPage() {
       issuer: 'Frontend Masters',
       date: '2026',
       description: 'Advanced Next.js development certification covering latest features, app router, server components, and performance optimization.',
-      file: '/next-js-v4-dark.pdf',
+      file: '/images/certificates/next js v4.png',
       icon: Code,
       gradient: 'from-yellow-400 to-amber-600',
       tags: ['Next.js', 'React', 'Web Development', 'Frontend']
@@ -33,7 +33,7 @@ export default function CertificatesPage() {
       issuer: 'Frontend Masters',
       date: '2026',
       description: 'Comprehensive web security certification covering OWASP top 10, secure coding practices, and vulnerability assessment.',
-      file: '/web-security-v2-dark.pdf',
+      file: '/images/certificates/web security v2.png',
       icon: Shield,
       gradient: 'from-amber-600 to-yellow-400',
       tags: ['Security', 'Web Development', 'OWASP', 'Best Practices']
@@ -118,10 +118,10 @@ export default function CertificatesPage() {
 
                   {/* Certificate Display */}
                   <div className="bg-gray-900/50 rounded-lg overflow-hidden border border-gray-700/50">
-                    <iframe
+                    <img
                       src={certificate.file}
-                      className="w-full h-96 border-0"
-                      title={`${certificate.title} Certificate`}
+                      alt={`${certificate.title} Certificate`}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
 
