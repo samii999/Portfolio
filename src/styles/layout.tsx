@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     title: 'Muhammad Usman | Portfolio',
     description: 'BSCS Student & Web Developer - Explore my projects, skills, and journey in web development',
     siteName: 'Muhammad Usman Portfolio',
-    images: [
+        images: [
       {
-        url: '/images/profile/profile.jpeg',
+        url: '/images/profile/profile picture.png',
         width: 1200,
         height: 630,
         alt: 'Muhammad Usman Portfolio',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Muhammad Usman | Portfolio',
     description: 'BSCS Student & Web Developer',
-    images: ['/images/profile/profile.jpeg'],
+    images: ['/images/profile/profile picture.png'],
   },
   robots: {
     index: true,

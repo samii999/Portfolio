@@ -99,10 +99,11 @@ export default function Home() {
                 
                 {/* Profile image */}
                 <Image
-                  src="/images/profile/profile.jpeg"
+                  src="/images/profile/profile picture.png"
                   alt="Muhammad Usman"
                   fill
                   className="rounded-full object-cover border-4 border-yellow-400 shadow-2xl relative z-20"
+                  style={{ objectPosition: '50% 12%' }}
                   priority
                   sizes="(max-width: 768px) 256px, 320px"
                 />

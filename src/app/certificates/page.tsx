@@ -17,12 +17,25 @@ export default function CertificatesPage() {
 
   const certificates = [
     {
+      id: 'agent-v2',
+      title: 'Agent v2 Certification',
+      issuer: 'Agent Engineering Program',
+      date: '2026',
+      description: 'Comprehensive AI engineering certification focused on building zero-dependency autonomous agent runtimes from scratch. Covers the ReAct loop execution framework, strict tool-calling safety with Zod, and multi-turn automated evaluation pipelines.',
+      file: '/images/certificates/agent-v2.png',
+      projectLink: 'https://github.com/samii999/AI-Agent/blob/main/README.md',
+      icon: Code,
+      gradient: 'from-yellow-400 to-amber-600',
+      tags: ['AI', 'Agents', 'ReAct', 'Zod', 'Evaluation']
+    },
+    {
       id: 'next-js-v4',
       title: 'Next.js v4 Certification',
       issuer: 'Frontend Masters',
       date: '2026',
       description: 'Advanced Next.js development certification covering latest features, app router, server components, and performance optimization.',
       file: '/images/certificates/next js v4.png',
+      projectLink: 'https://github.com/samii999/Nextjs-fundemental/blob/main/README.md',
       icon: Code,
       gradient: 'from-yellow-400 to-amber-600',
       tags: ['Next.js', 'React', 'Web Development', 'Frontend']
@@ -34,6 +47,7 @@ export default function CertificatesPage() {
       date: '2026',
       description: 'Comprehensive web security certification covering OWASP top 10, secure coding practices, and vulnerability assessment.',
       file: '/images/certificates/web security v2.png',
+      projectLink: 'https://github.com/samii999/Web-Security/blob/main/README.md',
       icon: Shield,
       gradient: 'from-amber-600 to-yellow-400',
       tags: ['Security', 'Web Development', 'OWASP', 'Best Practices']
@@ -115,6 +129,21 @@ export default function CertificatesPage() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Read More Link */}
+                  {certificate.projectLink && (
+                    <div className="mb-4">
+                      <a
+                        href={certificate.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Read more
+                      </a>
+                    </div>
+                  )}
 
                   {/* Certificate Display */}
                   <div className="bg-gray-900/50 rounded-lg overflow-hidden border border-gray-700/50">

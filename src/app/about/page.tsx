@@ -94,10 +94,11 @@ export default function AboutPage() {
                   <div className="absolute inset-0 rounded-full border-2 border-yellow-400/30" />
                   
                   <Image
-                    src="/images/profile/profile.jpeg"
+                    src="/images/profile/profile picture.png"
                     alt="Muhammad Usman"
                     fill
                     className="rounded-2xl object-cover border-4 border-yellow-400 shadow-2xl relative z-10"
+                    style={{ objectPosition: '50% 12%' }}
                     sizes="(max-width: 768px) 256px, 256px"
                   />
                 </div>
