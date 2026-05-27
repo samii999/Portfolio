@@ -18,6 +18,7 @@ export default function SkillBadge({ skill, showLevel = false, size = 'md' }: Sk
       case 'frontend': return 'bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 border-yellow-400/30 hover:border-yellow-400/60';
       case 'backend': return 'bg-gradient-to-r from-amber-600/20 to-yellow-400/20 text-amber-400 border-amber-400/30 hover:border-amber-400/60';
       case 'mobile': return 'bg-gradient-to-r from-yellow-500/20 to-amber-500/20 text-yellow-500 border-yellow-500/30 hover:border-yellow-500/60';
+      case 'ai': return 'bg-gradient-to-r from-amber-500/20 to-yellow-400/20 text-amber-300 border-amber-300/30 hover:border-amber-300/60';
       default: return 'bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 border-yellow-400/30 hover:border-yellow-400/60';
     }
   };

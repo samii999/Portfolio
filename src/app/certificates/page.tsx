@@ -8,7 +8,10 @@ import {
   ExternalLink,
   FileText,
   Shield,
-  Code
+  Code,
+  Sparkles,
+  ArrowRight,
+  BadgeCheck
 } from 'lucide-react';
 
 // NO framer-motion imports - completely removed
@@ -55,52 +58,54 @@ export default function CertificatesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Hero Section - Static */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 to-amber-600/5" />
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 rounded-full text-sm font-medium mb-4 border border-yellow-400/30 backdrop-blur-sm">
-            Professional Development
-          </span>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Certificates &{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
-              Achievements
-            </span>
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative isolate py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.16),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.12),_transparent_24%),linear-gradient(180deg,_#000000_0%,_#0a0a0a_50%,_#000000_100%)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px]" />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="text-5xl font-black leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <span className="block text-white">Certificates and</span>
+            <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600 bg-clip-text text-transparent">achievements.</span>
           </h1>
-          
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-            Professional certifications that validate my expertise and commitment to continuous learning in web development and security.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300 md:text-xl">
+            Certifications that support my work in web development, AI agent systems, and security-focused engineering.
           </p>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              { label: 'Certificates', value: certificates.length },
+              { label: 'Latest year', value: '2026' },
+              { label: 'Focus areas', value: 'AI + Security' }
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-5 backdrop-blur-xl">
+                <div className="text-3xl font-black text-yellow-400">{stat.value}</div>
+                <div className="mt-2 text-sm uppercase tracking-[0.2em] text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Certificates Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+      <section className="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2">
             {certificates.map((certificate, index) => {
               const Icon = certificate.icon;
               return (
                 <div
                   key={certificate.id}
-                  className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm p-8 hover:border-yellow-400/30 transition-all hover:scale-105 hover:-translate-y-2"
+                  className="rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-6 backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-yellow-400/30"
                 >
-                  {/* Certificate Header */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${certificate.gradient} text-black flex items-center justify-center flex-shrink-0`}>
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${certificate.gradient} text-black flex items-center justify-center flex-shrink-0 shadow-lg shadow-yellow-500/20`}>
                       <Icon className="w-8 h-8" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 text-white">
                         {certificate.title}
                       </h3>
-                      <div className="flex items-center gap-3 text-sm text-gray-400">
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
                         <span className="flex items-center gap-1">
                           <Award className="w-4 h-4" />
                           {certificate.issuer}
@@ -114,30 +119,28 @@ export default function CertificatesPage() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-5 leading-relaxed">
                     {certificate.description}
                   </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-5">
                     {certificate.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 rounded-md text-xs font-medium border border-yellow-400/30 transition-all hover:scale-105 hover:border-yellow-400/50"
+                        className="rounded-full border border-yellow-400/20 bg-yellow-400/10 px-3 py-1 text-xs font-medium text-yellow-100"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Read More Link */}
                   {certificate.projectLink && (
                     <div className="mb-4">
                       <a
                         href={certificate.projectLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-yellow-400 hover:underline"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-yellow-300 hover:text-yellow-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                         Read more
@@ -145,8 +148,7 @@ export default function CertificatesPage() {
                     </div>
                   )}
 
-                  {/* Certificate Display */}
-                  <div className="bg-gray-900/50 rounded-lg overflow-hidden border border-gray-700/50">
+                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/40">
                     <img
                       src={certificate.file}
                       alt={`${certificate.title} Certificate`}
@@ -159,26 +161,25 @@ export default function CertificatesPage() {
             })}
           </div>
 
-          {/* Stats Section */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-gradient-to-br from-yellow-400 to-amber-600 text-black rounded-xl p-6 shadow-lg shadow-yellow-500/25 border border-yellow-400/30 hover:scale-105 transition-all">
-              <div className="flex items-center gap-3 mb-2">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="rounded-[1.5rem] border border-yellow-400/30 bg-gradient-to-br from-yellow-400 to-amber-600 p-6 text-black shadow-lg shadow-yellow-500/25 transition-all hover:-translate-y-1">
+              <div className="mb-2 flex items-center gap-3">
                 <Award className="w-6 h-6" />
                 <div className="text-3xl font-bold">{certificates.length}</div>
               </div>
               <div className="text-black/80 font-medium">Total Certificates</div>
             </div>
             
-            <div className="bg-gradient-to-br from-amber-600 to-yellow-400 text-black rounded-xl p-6 shadow-lg shadow-amber-500/25 border border-amber-400/30 hover:scale-105 transition-all">
-              <div className="flex items-center gap-3 mb-2">
+            <div className="rounded-[1.5rem] border border-amber-400/30 bg-gradient-to-br from-amber-600 to-yellow-400 p-6 text-black shadow-lg shadow-amber-500/25 transition-all hover:-translate-y-1">
+              <div className="mb-2 flex items-center gap-3">
                 <Calendar className="w-6 h-6" />
                 <div className="text-3xl font-bold">2026</div>
               </div>
               <div className="text-black/80 font-medium">Latest Achievement</div>
             </div>
             
-            <div className="bg-gradient-to-br from-yellow-500 to-amber-500 text-black rounded-xl p-6 shadow-lg shadow-yellow-500/25 border border-yellow-400/30 hover:scale-105 transition-all">
-              <div className="flex items-center gap-3 mb-2">
+            <div className="rounded-[1.5rem] border border-yellow-400/30 bg-gradient-to-br from-yellow-500 to-amber-500 p-6 text-black shadow-lg shadow-yellow-500/25 transition-all hover:-translate-y-1">
+              <div className="mb-2 flex items-center gap-3">
                 <FileText className="w-6 h-6" />
                 <div className="text-3xl font-bold">100%</div>
               </div>
@@ -186,8 +187,7 @@ export default function CertificatesPage() {
             </div>
           </div>
 
-          {/* Learning Path Section */}
-          <div className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm p-8 hover:border-yellow-400/30 transition-all">
+          <div className="mt-12 rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-6 backdrop-blur-xl hover:border-yellow-400/30 transition-all md:p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <span className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-amber-600 rounded-full" />
               <span className="bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-transparent">
@@ -195,9 +195,9 @@ export default function CertificatesPage() {
               </span>
             </h2>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid gap-6 md:grid-cols-3">
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-r from-yellow-400/20 to-amber-600/20 border border-yellow-400/30 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-yellow-400/20 to-amber-600/20 border border-yellow-400/30 flex items-center justify-center">
                   <Code className="w-8 h-8 text-yellow-400" />
                 </div>
                 <h4 className="font-bold mb-2 text-white">Technical Skills</h4>
@@ -205,7 +205,7 @@ export default function CertificatesPage() {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-r from-amber-600/20 to-yellow-400/20 border border-yellow-400/30 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-amber-600/20 to-yellow-400/20 border border-yellow-400/30 flex items-center justify-center">
                   <Shield className="w-8 h-8 text-yellow-400" />
                 </div>
                 <h4 className="font-bold mb-2 text-white">Security Focus</h4>
@@ -213,7 +213,7 @@ export default function CertificatesPage() {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-400/30 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-400/30 flex items-center justify-center">
                   <Award className="w-8 h-8 text-yellow-400" />
                 </div>
                 <h4 className="font-bold mb-2 text-white">Professional Growth</h4>

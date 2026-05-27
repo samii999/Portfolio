@@ -4,111 +4,84 @@
 import { useState } from 'react';
 import { skills, skillCategories, getSkillsByCategory } from '@/data/skills';
 import SkillBadge from '@/components/SkillBadge';
-import { Code, Server, Smartphone, Wrench, Award, BookOpen } from 'lucide-react';
-
-// NO framer-motion imports - completely removed
+import { Code, Server, Smartphone, Wrench, Award, BookOpen, Brain, Sparkles, Layers3 } from 'lucide-react';
 
 export default function SkillsPage() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [showLevels, setShowLevels] = useState(false);
 
   const getCategoryIcon = (categoryId: string) => {
-    switch(categoryId) {
-      case 'frontend': return <Code className="w-6 h-6" />;
-      case 'backend': return <Server className="w-6 h-6" />;
-      case 'mobile': return <Smartphone className="w-6 h-6" />;
-      case 'other': return <Wrench className="w-6 h-6" />;
-      default: return null;
+    switch (categoryId) {
+      case 'frontend':
+        return <Code className="w-6 h-6" />;
+      case 'backend':
+        return <Server className="w-6 h-6" />;
+      case 'mobile':
+        return <Smartphone className="w-6 h-6" />;
+      case 'ai':
+        return <Brain className="w-6 h-6" />;
+      case 'other':
+        return <Wrench className="w-6 h-6" />;
+      default:
+        return null;
     }
   };
 
-  const filteredSkills = activeCategory === 'all' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeCategory);
+  const filteredSkills = activeCategory === 'all' ? skills : skills.filter((skill) => skill.category === activeCategory);
 
-  // Static summary data
   const summaryCards = [
-    {
-      icon: Award,
-      value: skills.length,
-      label: "Total Skills",
-      gradient: "from-yellow-400 to-amber-600"
-    },
-    {
-      icon: Code,
-      value: skills.filter(s => s.level && s.level >= 4).length,
-      label: "Advanced Skills",
-      gradient: "from-amber-600 to-yellow-400"
-    },
-    {
-      icon: BookOpen,
-      value: skillCategories.length,
-      label: "Categories",
-      gradient: "from-yellow-500 to-amber-500"
-    }
+    { icon: Award, value: skills.length, label: 'Total Skills', gradient: 'from-yellow-400 to-amber-600' },
+    { icon: Code, value: skills.filter((skill) => skill.level && skill.level >= 4).length, label: 'Advanced Skills', gradient: 'from-amber-600 to-yellow-400' },
+    { icon: BookOpen, value: skillCategories.length, label: 'Categories', gradient: 'from-yellow-500 to-amber-500' }
   ];
 
   const learningItems = [
-    {
-      title: "Advanced Machine Learning",
-      description: "Deepening AI/ML knowledge",
-      icon: "🤖"
-    },
-    {
-      title: "Cloud Computing",
-      description: "AWS and cloud architecture",
-      icon: "☁️"
-    },
-    {
-      title: "System Design",
-      description: "Scalable architecture patterns",
-      icon: "🏗️"
-    }
+    { title: 'Agentic Workflows', description: 'Improving multi-step reasoning and tool use', icon: '🤖' },
+    { title: 'Memory Compaction', description: 'Summarizing long-running context safely', icon: '☁️' },
+    { title: 'Evaluation Benchmarking', description: 'Measuring agent accuracy and resilience', icon: '🏗️' }
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Hero Section - Static */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 to-amber-600/5" />
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
-            Technical Skills
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative isolate py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.16),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.12),_transparent_24%),linear-gradient(180deg,_#000000_0%,_#0a0a0a_50%,_#000000_100%)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px]" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="text-5xl font-black leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <span className="block text-white">Technical skills that</span>
+            <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600 bg-clip-text text-transparent">show depth and range.</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Technologies and tools I work with to build amazing applications
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300 md:text-xl">
+            Technologies and tools I work with to build web apps, mobile apps, and AI agents.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-          {/* Category Tabs - Static buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <section className="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 flex flex-wrap justify-center gap-3">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 border
-                ${activeCategory === 'all' 
-                  ? 'bg-gradient-to-r from-yellow-400 to-amber-600 text-black shadow-lg shadow-yellow-500/25 scale-105 border border-yellow-400/30' 
-                  : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 border border-gray-600/30 hover:border-yellow-400/30 backdrop-blur-sm'
-                }`}
+              className={`inline-flex items-center gap-2 rounded-full border px-6 py-3 font-medium transition-all ${
+                activeCategory === 'all'
+                  ? 'border-yellow-400/30 bg-gradient-to-r from-yellow-400 to-amber-600 text-black shadow-lg shadow-yellow-500/25'
+                  : 'border-white/10 bg-white/5 text-gray-300 hover:border-yellow-400/30 hover:bg-yellow-400/10'
+              }`}
             >
-              <Award size={20} />
+              <Award size={18} />
               All Skills
             </button>
+
             {skillCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 border
-                  ${activeCategory === category.id 
-                    ? 'bg-gradient-to-r from-yellow-400 to-amber-600 text-black shadow-lg shadow-yellow-500/25 scale-105 border border-yellow-400/30' 
-                    : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 border border-gray-600/30 hover:border-yellow-400/30 backdrop-blur-sm'
-                  }`}
+                className={`inline-flex items-center gap-2 rounded-full border px-6 py-3 font-medium transition-all ${
+                  activeCategory === category.id
+                    ? 'border-yellow-400/30 bg-gradient-to-r from-yellow-400 to-amber-600 text-black shadow-lg shadow-yellow-500/25'
+                    : 'border-white/10 bg-white/5 text-gray-300 hover:border-yellow-400/30 hover:bg-yellow-400/10'
+                }`}
               >
                 {getCategoryIcon(category.id)}
                 {category.name}
@@ -116,10 +89,9 @@ export default function SkillsPage() {
             ))}
           </div>
 
-          {/* View Toggle - Simple checkbox */}
-          <div className="flex justify-end mb-8">
-            <label className="flex items-center gap-2 cursor-pointer bg-gray-800/50 px-4 py-2 rounded-lg border border-gray-600/30 backdrop-blur-sm hover:border-yellow-400/30 transition-all">
-              <span className="text-sm text-gray-300">Show Levels</span>
+          <div className="mb-8 flex justify-end">
+            <label className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 backdrop-blur-md hover:border-yellow-400/30 transition-all cursor-pointer">
+              <span>Show Levels</span>
               <div className="relative">
                 <input
                   type="checkbox"
@@ -127,45 +99,44 @@ export default function SkillsPage() {
                   checked={showLevels}
                   onChange={() => setShowLevels(!showLevels)}
                 />
-                <div className={`block w-10 h-6 rounded-full transition-colors ${showLevels ? 'bg-gradient-to-r from-yellow-400 to-amber-600' : 'bg-gray-600'}`} />
-                <div 
-                  className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200`}
-                  style={{ transform: showLevels ? 'translateX(16px)' : 'translateX(0)' }}
+                <div className={`h-6 w-11 rounded-full transition-colors ${showLevels ? 'bg-gradient-to-r from-yellow-400 to-amber-600' : 'bg-gray-600'}`} />
+                <div
+                  className="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition-transform duration-200"
+                  style={{ transform: showLevels ? 'translateX(20px)' : 'translateX(0)' }}
                 />
               </div>
             </label>
           </div>
 
-          {/* Skills Grid by Category */}
           {activeCategory === 'all' ? (
-            <div className="space-y-12">
+            <div className="space-y-8">
               {skillCategories.map((category) => {
                 const categorySkills = getSkillsByCategory(category.id);
+
                 return (
-                  <div 
-                    key={category.id} 
-                    className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm p-8 hover:border-yellow-400/30 transition-all"
-                  >
-                    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-700">
-                      <div className="p-3 rounded-lg bg-gradient-to-r from-yellow-400/20 to-amber-600/20 border border-yellow-400/30">
-                        {getCategoryIcon(category.id)}
+                  <div key={category.id} className="rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-6 backdrop-blur-xl hover:border-yellow-400/30 transition-all md:p-8">
+                    <div className="mb-6 flex flex-col gap-4 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="rounded-xl border border-yellow-400/30 bg-gradient-to-r from-yellow-400/20 to-amber-600/20 p-3">
+                          {getCategoryIcon(category.id)}
+                        </div>
+                        <div>
+                          <h2 className="bg-gradient-to-r from-yellow-300 to-amber-600 bg-clip-text text-2xl font-bold text-transparent">
+                            {category.name}
+                          </h2>
+                          <p className="text-sm text-gray-400">{categorySkills.length} technologies</p>
+                        </div>
                       </div>
-                      <div>
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-transparent">
-                          {category.name}
-                        </h2>
-                        <p className="text-gray-400 text-sm">{categorySkills.length} technologies</p>
+
+                      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-2 text-xs text-gray-300">
+                        <Code size={14} className="text-yellow-300" />
+                        Recruiter friendly
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-3">
                       {categorySkills.map((skill, index) => (
-                        <SkillBadge 
-                          key={index}
-                          skill={skill} 
-                          showLevel={showLevels}
-                          size="lg"
-                        />
+                        <SkillBadge key={index} skill={skill} showLevel={showLevels} size="lg" />
                       ))}
                     </div>
                   </div>
@@ -173,71 +144,63 @@ export default function SkillsPage() {
               })}
             </div>
           ) : (
-            <div className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm p-8 hover:border-yellow-400/30 transition-all">
-              {skillCategories.filter(c => c.id === activeCategory).map((category) => (
-                <div key={category.id} className="mb-6 pb-4 border-b border-gray-700">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-lg bg-gradient-to-r from-yellow-400/20 to-amber-600/20 border border-yellow-400/30">
-                      {getCategoryIcon(category.id)}
+            <div className="rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-6 backdrop-blur-xl hover:border-yellow-400/30 transition-all md:p-8">
+              {skillCategories
+                .filter((category) => category.id === activeCategory)
+                .map((category) => (
+                  <div key={category.id}>
+                    <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                      <div className="rounded-xl border border-yellow-400/30 bg-gradient-to-r from-yellow-400/20 to-amber-600/20 p-3">
+                        {getCategoryIcon(category.id)}
+                      </div>
+                      <div>
+                        <h2 className="bg-gradient-to-r from-yellow-300 to-amber-600 bg-clip-text text-2xl font-bold text-transparent">
+                          {category.name}
+                        </h2>
+                        <p className="text-sm text-gray-400">{filteredSkills.length} technologies</p>
+                      </div>
                     </div>
-                    <div>
-                      <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-transparent">
-                        {category.name}
-                      </h2>
-                      <p className="text-gray-400">{filteredSkills.length} technologies</p>
+
+                    <div className="flex flex-wrap gap-3">
+                      {filteredSkills.map((skill, index) => (
+                        <SkillBadge key={index} skill={skill} showLevel={showLevels} size="lg" />
+                      ))}
                     </div>
                   </div>
-                </div>
-              ))}
-              
-              <div className="flex flex-wrap gap-3">
-                {filteredSkills.map((skill, index) => (
-                  <SkillBadge 
-                    key={index}
-                    skill={skill} 
-                    showLevel={showLevels}
-                    size="lg"
-                  />
                 ))}
-              </div>
             </div>
           )}
 
-          {/* Skill Summary Section - Static numbers */}
-          <section className="mt-20 grid md:grid-cols-3 gap-6">
+          <section className="mt-20 grid gap-6 md:grid-cols-3">
             {summaryCards.map((card, index) => (
-              <div 
+              <div
                 key={index}
-                className={`bg-gradient-to-br ${card.gradient} text-black rounded-xl p-6 shadow-lg shadow-yellow-500/25 border border-yellow-400/30 hover:scale-105 transition-all hover:shadow-yellow-400/40`}
+                className={`rounded-[1.5rem] border border-yellow-400/30 bg-gradient-to-br ${card.gradient} p-6 text-black shadow-lg shadow-yellow-500/25 transition-all hover:-translate-y-1 hover:shadow-yellow-400/40`}
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <card.icon className="w-6 h-6" />
+                <div className="mb-2 flex items-center gap-3">
+                  <card.icon className="h-6 w-6" />
                   <div className="text-3xl font-bold">{card.value}+</div>
                 </div>
-                <div className="text-black/80 font-medium">{card.label}</div>
+                <div className="font-medium text-black/80">{card.label}</div>
               </div>
             ))}
           </section>
 
-          {/* Learning Section - Static */}
-          <section className="mt-20 bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl border border-yellow-400/20 backdrop-blur-sm p-8 shadow-xl hover:border-yellow-400/30 transition-all">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 bg-gradient-to-r from-yellow-400 to-amber-600 rounded-lg text-black">
+          <section className="mt-20 rounded-[1.5rem] border border-yellow-400/15 bg-white/5 p-6 shadow-xl backdrop-blur-xl hover:border-yellow-400/30 transition-all md:p-8">
+            <div className="mb-8 flex items-center gap-4">
+              <div className="rounded-xl bg-gradient-to-r from-yellow-400 to-amber-600 p-3 text-black">
                 <BookOpen size={24} />
               </div>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-transparent">
+              <h2 className="bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-2xl font-bold text-transparent">
                 Currently Learning
               </h2>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {learningItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 hover:border-yellow-400/30 transition-all hover:scale-105 hover:-translate-y-1"
-                >
-                  <div className="text-2xl mb-3">{item.icon}</div>
-                  <div className="font-bold mb-2 text-white">{item.title}</div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {learningItems.map((item) => (
+                <div key={item.title} className="rounded-[1.25rem] border border-white/10 bg-black/30 p-6 transition-all hover:-translate-y-1 hover:border-yellow-400/30">
+                  <div className="mb-3 text-2xl">{item.icon}</div>
+                  <div className="mb-2 font-bold text-white">{item.title}</div>
                   <div className="text-sm text-gray-400">{item.description}</div>
                 </div>
               ))}

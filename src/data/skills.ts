@@ -1,7 +1,7 @@
 // src/data/skills.ts
 export interface Skill {
   name: string;
-  category: 'frontend' | 'backend' | 'mobile' | 'other';
+  category: 'frontend' | 'backend' | 'mobile' | 'ai' | 'other';
   level?: number; // Optional skill level 1-5
 }
 
@@ -21,6 +21,16 @@ export const skills: Skill[] = [
   { name: 'Firebase', category: 'backend', level: 4 },
   { name: 'Supabase', category: 'backend', level: 4 },
   { name: 'REST APIs', category: 'backend', level: 4 },
+
+  // AI / Agentic Skills
+  { name: 'Vercel AI SDK', category: 'ai', level: 4 },
+  { name: 'Zod', category: 'ai', level: 4 },
+  { name: 'Tavily API', category: 'ai', level: 3 },
+  { name: 'ReAct Workflows', category: 'ai', level: 4 },
+  { name: 'Memory Compaction', category: 'ai', level: 3 },
+  { name: 'Evaluation Suites', category: 'ai', level: 3 },
+  { name: 'Structured Tool Calling', category: 'ai', level: 4 },
+  { name: 'Agent Benchmarking', category: 'ai', level: 3 },
   
   // Mobile Skills
   { name: 'React Native', category: 'mobile', level: 4 },
@@ -37,6 +47,7 @@ export const skillCategories = [
   { id: 'frontend', name: 'Frontend Development', color: 'blue', icon: '🎨' },
   { id: 'backend', name: 'Backend Development', color: 'green', icon: '⚙️' },
   { id: 'mobile', name: 'Mobile Development', color: 'purple', icon: '📱' },
+  { id: 'ai', name: 'AI Agent Development', color: 'gold', icon: '🤖' },
   { id: 'other', name: 'Other Skills', color: 'orange', icon: '🔧' },
 ];
 
