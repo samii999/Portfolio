@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/data/project';
@@ -30,7 +31,7 @@ export default function ProjectsPage() {
     { label: 'Featured Focus', value: 'Web + AI' }
   ];
 
-  const categoryIcons: Record<string, JSX.Element> = {
+  const categoryIcons: Record<string, ReactElement> = {
     all: <FolderKanban size={18} />,
     fyp: <Sparkles size={18} />,
     personal: <Code2 size={18} />,
