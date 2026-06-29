@@ -90,4 +90,18 @@ export const projects: Project[] = [
     technologies: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Admin Auth', 'Real-time Notifications'],
     category: 'professional',
   },
+  {
+    id: 'aiagent',
+    title: 'AI Agent - CLI-Based Autonomous Task Executor',
+    description: 'A CLI-based AI Agent that takes a single natural language command and autonomously executes multi-step tasks',
+    longDescription: 'A CLI-based AI Agent that takes a single natural language command and autonomously executes multi-step tasks — browsing the web, reading/writing files, and self-correcting when it hits obstacles. Built with TypeScript, Vercel AI SDK, and Google Gemini.',
+    images: [
+      '/images/projects/AI Agent/terminal tool.png',
+      '/images/projects/AI Agent/tools.png',
+      '/images/projects/AI Agent/websearch.png',
+    ],
+    githubLink: 'https://github.com/samii999/ai-agent',
+    technologies: ['TypeScript', 'Node.js', 'Vercel AI SDK', 'Google Gemini', 'Zod', 'Tavily API'],
+    category: 'personal',
+  },
 ];
